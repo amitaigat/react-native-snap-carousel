@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { ScrollView, Animated, Platform, Easing } from 'react-native';
+import { ScrollView, Animated, Platform, Easing, I18nManager } from 'react-native';
 import shallowCompare from 'react-addons-shallow-compare';
 
 export default class Carousel extends Component {
@@ -455,7 +455,9 @@ export default class Carousel extends Component {
         return (
             <ScrollView
               decelerationRate={0.9}
-              style={style}
+              style={[style, {
+              	flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row'
+              }]}
               contentContainerStyle={contentContainerStyle}
               ref={'scrollview'}
               horizontal={true}
